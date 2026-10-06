@@ -1,0 +1,16 @@
+# Install PyTorch separately FIRST, matching your GPU/CUDA version:
+#   https://pytorch.org/get-started/locally/
+# Example (CUDA 12.1):
+#   pip install torch --index-url https://download.pytorch.org/whl/cu121
+#
+# Then install everything below:
+#   pip install -r requirements.txt
+
+transformers>=4.45
+datasets>=2.19
+peft>=0.12
+bitsandbytes>=0.43
+trl>=0.10
+accelerate>=0.33
+matplotlib>=3.8
+numpy>=1.26
