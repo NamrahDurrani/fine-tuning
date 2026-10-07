@@ -1,0 +1,1778 @@
+{
+  "generated_at": "2026-10-07 18:58:06",
+  "benchmark_sha256": "98368208e07f84d13b62013c0ca00736ffecdea71deb65dfab15d2603cf336f4",
+  "smoke": 0,
+  "config": {
+    "max_new_tokens": 1024,
+    "do_sample": false,
+    "quantization": "4bit",
+    "base_model": "Qwen/Qwen3-4B-Thinking-2507",
+    "judge_order": [
+      "gemini",
+      "gptoss"
+    ],
+    "gemini_model": "gemini-2.5-flash",
+    "gptoss_provider": "groq",
+    "gptoss_model": "openai/gpt-oss-20b",
+    "target": 95,
+    "seed": 42
+  },
+  "hardware": {
+    "python": "3.10.12",
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.35",
+    "torch": "2.11.0+cu128",
+    "cuda_available": true,
+    "cuda_version": "12.8",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "vram_total_gb": 23.55,
+    "free_vram_gb": 22.72,
+    "bf16_supported": true,
+    "compute_capability": [
+      8,
+      6
+    ],
+    "dtype": "bfloat16",
+    "transformers": "5.19.0",
+    "peft": "0.21.2",
+    "bitsandbytes": "0.50.2",
+    "sentence_transformers": "6.1.0",
+    "quantization_available": true
+  },
+  "models": [
+    {
+      "label": "base",
+      "role": "Model A - Base",
+      "kind": "base",
+      "path": "Qwen/Qwen3-4B-Thinking-2507",
+      "info": {
+        "model": "Qwen/Qwen3-4B-Thinking-2507"
+      }
+    },
+    {
+      "label": "fine_tuned",
+      "role": "Model B - Fine-Tuned (Notebook 1)",
+      "kind": "peft_adapter",
+      "path": "/home/rapidsai/Desktop/fine-tuning/AgriBot_Project/weights_nb1/final_adapter",
+      "info": {
+        "path": "/home/rapidsai/Desktop/fine-tuning/AgriBot_Project/weights_nb1/final_adapter",
+        "kind": "peft_adapter",
+        "problems": [],
+        "notes": [],
+        "base_model": "Qwen/Qwen3-4B-Thinking-2507",
+        "peft_type": "LORA",
+        "r": 16,
+        "lora_alpha": 32,
+        "use_dora": true,
+        "target_modules": [
+          "down_proj",
+          "k_proj",
+          "o_proj",
+          "gate_proj",
+          "up_proj",
+          "v_proj",
+          "q_proj"
+        ],
+        "has_tokenizer_files": true
+      }
+    }
+  ],
+  "skipped_models": [
+    {
+      "label": "moa",
+      "reason": "Model C - Optimized MoA (Notebook 2): no weights found (looked for weights_nb2 under ['/home/rapidsai/Desktop/fine-tuning', '/home/rapidsai/Desktop/fine-tuning/AgriBot_Project'])"
+    }
+  ],
+  "benchmark_stats": {
+    "n": 100,
+    "categories": {
+      "Unknown": 100
+    },
+    "difficulty": {
+      "unspecified": 100
+    },
+    "with_gold": 0
+  },
+  "leakage": {
+    "embedding_backend": "sentence-transformers:sentence-transformers/all-MiniLM-L6-v2",
+    "thresholds": [
+      0.9,
+      0.95,
+      0.97
+    ],
+    "total_benchmark_questions": 100,
+    "training_sources": {
+      "dataset_rows": 5000,
+      "extra_files": [
+        {
+          "file": "/home/rapidsai/Desktop/fine-tuning/AgriBot_Project/AgriBot_5000_Unique_Agriculture_Dataset.json",
+          "n": 5000
+        }
+      ]
+    },
+    "exact_leakage_count": 0,
+    "near_duplicate_counts": {
+      ">=0.9": 0,
+      ">=0.95": 0,
+      ">=0.97": 0
+    },
+    "near_duplicate_count_at_0.90": 0,
+    "safe_count": 100,
+    "flagged_questions": [],
+    "flagged_ids": [],
+    "gold_answer_vs_training_responses_ge_0.90": [],
+    "note": "Flagged questions are NOT removed. Scores are also reported on the leakage-clean subset."
+  },
+  "dataset_quality": {
+    "n_rows": 5000,
+    "exact_duplicate_questions": 0,
+    "exact_duplicate_answers": 0,
+    "category_counts": {
+      "Livestock": 350,
+      "Crop production": 750,
+      "Soil & fertilizers": 650,
+      "Farm machinery": 300,
+      "Pests & diseases": 750,
+      "Climate & weather": 300,
+      "Irrigation & water": 500,
+      "General sustainable agriculture": 450,
+      "Post-harvest": 350,
+      "Pakistan agriculture": 600
+    },
+    "region_focus_counts": {
+      "central Punjab": 338,
+      "irrigated Punjab": 316,
+      "Sindh": 327,
+      "Islamabad Capital Territory": 347,
+      "rainfed Punjab": 310,
+      "upper Sindh": 322,
+      "arid Balochistan": 374,
+      "northern Pakistan": 329,
+      "Punjab": 336,
+      "coastal Sindh": 341,
+      "Balochistan": 303,
+      "southern Punjab": 334,
+      "Khyber Pakhtunkhwa": 345,
+      "Potohar": 365,
+      "lower Sindh": 313
+    },
+    "answer_length_words": {
+      "mean": 73.1934,
+      "median": 73.0,
+      "min": 55,
+      "max": 96
+    },
+    "question_length_words": {
+      "mean": 23.0658,
+      "median": 23.0,
+      "min": 16,
+      "max": 35
+    },
+    "embedding_backend": "sentence-transformers:sentence-transformers/all-MiniLM-L6-v2",
+    "semantic_duplicate_questions": {
+      ">=0.9": {
+        "items_with_a_neighbour": 2800,
+        "pairs": 3879
+      },
+      ">=0.95": {
+        "items_with_a_neighbour": 1041,
+        "pairs": 742
+      },
+      ">=0.97": {
+        "items_with_a_neighbour": 299,
+        "pairs": 165
+      }
+    },
+    "semantic_duplicate_answers": {
+      ">=0.9": {
+        "items_with_a_neighbour": 4218,
+        "pairs": 48699
+      },
+      ">=0.95": {
+        "items_with_a_neighbour": 3252,
+        "pairs": 12363
+      },
+      ">=0.97": {
+        "items_with_a_neighbour": 2274,
+        "pairs": 3679
+      }
+    },
+    "train_validation_leakage_nb1_random_split": {
+      "train": 4500,
+      "validation": 500,
+      "val_items_with_train_neighbour>=0.9": 257,
+      "val_items_with_train_neighbour>=0.95": 93,
+      "val_items_with_train_neighbour>=0.97": 27
+    },
+    "warnings": []
+  },
+  "results": {
+    "model_only": {
+      "mode": "model_only",
+      "n_questions": 82,
+      "models": {
+        "base": {
+          "correct": 29,
+          "n": 82,
+          "accuracy": 0.35365853658536583,
+          "wilson_ci95": [
+            0.2588541267448773,
+            0.4615611497644142
+          ],
+          "bootstrap_ci95": [
+            0.25609756097560976,
+            0.45121951219512196
+          ],
+          "correct_judge1_only": 29,
+          "clean_subset": {
+            "n": 82,
+            "correct": 29,
+            "accuracy": 0.35365853658536583
+          },
+          "judge_total": {
+            "mean": 45.05487804878049,
+            "median": 33.5,
+            "std": 41.23502392545799,
+            "min": 0.0,
+            "max": 100.0,
+            "ci95_low": 36.23155487804878,
+            "ci95_high": 53.84176829268292
+          },
+          "dimension_means": {
+            "accuracy": 18.475609756097562,
+            "completeness": 9.231707317073171,
+            "relevance": 9.408536585365853,
+            "conciseness": 7.939024390243903
+          },
+          "hallucination_count": 5,
+          "critical_error_count": 6,
+          "judge_disagreements": 3,
+          "judge_mix": {
+            "gptoss": 54,
+            "auto": 28
+          },
+          "second_pass_independent": 0,
+          "second_pass_same_judge": 6,
+          "truncated_no_answer": 28,
+          "finish_reason_length": 80,
+          "mean_generation_seconds": 18.59329268292683,
+          "mean_tokens_generated": 1023.1341463414634,
+          "mean_reasoning_tokens": 781.3414634146342,
+          "per_category": {
+            "Unknown": {
+              "correct": 29,
+              "n": 82,
+              "accuracy": 0.35365853658536583
+            }
+          },
+          "per_difficulty": {
+            "unspecified": {
+              "correct": 29,
+              "n": 82,
+              "accuracy": 0.35365853658536583
+            }
+          }
+        },
+        "fine_tuned": {
+          "correct": 46,
+          "n": 82,
+          "accuracy": 0.5609756097560976,
+          "wilson_ci95": [
+            0.45322727057239914,
+            0.6632663642153962
+          ],
+          "bootstrap_ci95": [
+            0.45121951219512196,
+            0.6707317073170732
+          ],
+          "correct_judge1_only": 46,
+          "clean_subset": {
+            "n": 82,
+            "correct": 46,
+            "accuracy": 0.5609756097560976
+          },
+          "judge_total": {
+            "mean": 67.10365853658537,
+            "median": 77.0,
+            "std": 28.745234474054705,
+            "min": 15.0,
+            "max": 100.0,
+            "ci95_low": 60.81692073170732,
+            "ci95_high": 73.09771341463414
+          },
+          "dimension_means": {
+            "accuracy": 27.426829268292682,
+            "completeness": 13.140243902439025,
+            "relevance": 13.335365853658537,
+            "conciseness": 13.201219512195122
+          },
+          "hallucination_count": 0,
+          "critical_error_count": 5,
+          "judge_disagreements": 1,
+          "judge_mix": {
+            "gptoss": 82
+          },
+          "second_pass_independent": 0,
+          "second_pass_same_judge": 7,
+          "truncated_no_answer": 0,
+          "finish_reason_length": 0,
+          "mean_generation_seconds": 23.742378048780488,
+          "mean_tokens_generated": 86.23170731707317,
+          "mean_reasoning_tokens": 0.0,
+          "per_category": {
+            "Unknown": {
+              "correct": 46,
+              "n": 82,
+              "accuracy": 0.5609756097560976
+            }
+          },
+          "per_difficulty": {
+            "unspecified": {
+              "correct": 46,
+              "n": 82,
+              "accuracy": 0.5609756097560976
+            }
+          }
+        }
+      },
+      "pairs": {
+        "base__vs__fine_tuned": {
+          "accuracy_diff_pp": -20.731707317073177,
+          "mcnemar": {
+            "a_correct_b_wrong": 10,
+            "a_wrong_b_correct": 27,
+            "p_value": 0.007632078602910042
+          },
+          "bootstrap_acc_diff": {
+            "mean_diff": -0.2073170731707317,
+            "ci95_low": -0.34146341463414637,
+            "ci95_high": -0.07317073170731707
+          },
+          "bootstrap_score_diff": {
+            "mean_diff": -22.048780487804876,
+            "ci95_low": -32.048932926829266,
+            "ci95_high": -12.335365853658537
+          }
+        }
+      },
+      "pairwise": {},
+      "error_rows": [
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_001",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "FACTUAL_ERROR",
+          "critical_error": true,
+          "hallucination": false,
+          "judge_total": 32.0,
+          "manual_review": false,
+          "reason": "The answer incorrectly claims that melatonin has no direct influence on light‑inducible genes in rice, contradicting studies showing melatonin modulates circadian and light‑responsive gene expression."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_002",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "FACTUAL_ERROR",
+          "critical_error": true,
+          "hallucination": true,
+          "judge_total": 27.0,
+          "manual_review": false,
+          "reason": "The answer claims that \"双两优1号\" is not a standard variety and gives traits for a different variety, which is likely incorrect and misleading for the question asked."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_004",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 32.0,
+          "manual_review": false,
+          "reason": "The answer correctly notes that Dongfeng 1 is not a registered variety, but it does not provide any biological characteristics, so it fails to answer the question and is incomplete."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_005",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "FACTUAL_ERROR",
+          "critical_error": true,
+          "hallucination": false,
+          "judge_total": 22.0,
+          "manual_review": false,
+          "reason": "The answer incorrectly claims that no official corn variety is named \"330\" and therefore cannot discuss its disease resistance, whereas varieties such as Zhongdan 330 do exist and have documented resistance traits. This factual mistake makes the answer inaccurate and incomplete."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_006",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_007",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_008",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 15,
+          "manual_review": false,
+          "reason": "The answer does not provide the specific future research directions proposed by the paper; it merely requests the paper details and offers generic suggestions, thus failing to answer the question."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_009",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_013",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_014",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_015",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 15,
+          "manual_review": false,
+          "reason": "The answer does not provide the specific implications of the marker‑trait associations from the referenced study, only generic statements, so it fails to answer the question and is incomplete."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_016",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_018",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": true,
+          "judge_total": 27.5,
+          "manual_review": true,
+          "reason": "J1: The answer provides correct general agronomy strategies but does not address the specific paper’s suggested strategies, making it incomplete and not directly relevant to the question. | J2: The answer does not provide the specific strategies from the requested paper, instead offering generic suggestions, so it fails to answer the question."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_019",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "FACTUAL_ERROR",
+          "critical_error": true,
+          "hallucination": false,
+          "judge_total": 67.0,
+          "manual_review": false,
+          "reason": "The answer incorrectly attributes aroma control to OsSWEET1 (a sugar transporter) instead of the known BADH2 gene, and it does not specify the exact classification used in the study, making it incomplete."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_020",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_022",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 69.0,
+          "manual_review": false,
+          "reason": "The answer correctly lists general food‑processing methods that enhance calcium bioavailability, but it does not provide the specific suggestions from the paper in question, leaving the response incomplete relative to the asked question."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_023",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 70.0,
+          "manual_review": false,
+          "reason": "The answer accurately discusses factors causing rice area shrinkage but omits any discussion of the lack of high‑quality labor, making it incomplete relative to the question."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_024",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_026",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_027",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_028",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_032",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_033",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 49.5,
+          "manual_review": false,
+          "reason": "J1: The answer is truncated and does not fully explain how silks serve as entry points for fungal pathogens or the implications for maize health, making it incomplete. | J2: The answer is truncated and does not cover the full explanation of how maize silks serve as entry points for fungal pathogens or the implications for maize health, making it incomplete."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_034",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 28.5,
+          "manual_review": true,
+          "reason": "J1: The answer correctly identifies that \"snorkeling\" is not a recognized term and explains submergence tolerance mechanisms, but it does not provide the specific differences in flooding response between rice and weedy species, leaving the question largely unanswered. | J2: The answer misinterprets the term \"snorkeling\" and does not provide a comparison of flooding responses between rice and weedy species, thus failing to answer the question."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_036",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_038",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_039",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_040",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "FACTUAL_ERROR",
+          "critical_error": true,
+          "hallucination": false,
+          "judge_total": 12.0,
+          "manual_review": false,
+          "reason": "The answer incorrectly states that 9优766 does not exist and fails to provide any cultivation technology points, thus it is factually wrong and does not answer the question."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_043",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "QUESTION_MISUNDERSTANDING",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 5.0,
+          "manual_review": false,
+          "reason": "The answer does not address the specific differences observed between indica and japonica backgrounds in response to the ydl mutation, instead providing general background and uncertainty about the mutation name. It lacks any factual content relevant to the question and therefore is incomplete and misleading."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_044",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_046",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_047",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 47.0,
+          "manual_review": true,
+          "reason": "J1: The answer gives plausible typical ranges for growth period and accumulated temperature but does not provide the specific values requested for Tongyu 266, making it incomplete. | J2: The answer does not provide the specific growth period and accumulated temperature for Tongyu 266, only giving a general range for Northeast japonica rice and stating that detailed data is not publicly available. This makes the response incomplete for the question asked."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_049",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_050",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_053",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_054",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_055",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "HALLUCINATION",
+          "critical_error": false,
+          "hallucination": true,
+          "judge_total": 5.0,
+          "manual_review": false,
+          "reason": "The answer is incomplete, missing the chromosome for water absorption, and cites a likely fabricated reference. It does not provide the specific chromosomes requested and contains invented details, making it incorrect and hallucinated."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_056",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_058",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_060",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 15,
+          "manual_review": false,
+          "reason": "The answer does not address how the breeding of 繁源A balanced rice quality improvement with blast resistance, nor does it provide any breeding strategy or results. It merely questions the existence of the variety, leaving the original question unanswered."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_061",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_066",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 75.0,
+          "manual_review": false,
+          "reason": "The answer correctly describes RILs and their basic benefits, but it is truncated and omits key aspects such as QTL mapping, marker-assisted selection, and genomic selection, making it incomplete for the question."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_067",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_069",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 60.0,
+          "manual_review": false,
+          "reason": "J1: The answer correctly mentions ROS generation and cell wall disruption as antimicrobial mechanisms, but it omits key details on how green‑synthesized ZnO NPs affect maize growth, yield, toxicity, dosage, and safety considerations, making it incomplete. | J2: The answer correctly describes ROS generation and membrane disruption as antimicrobial mechanisms of green‑synthesized ZnO NPs, but it omits any discussion of their effects on maize growth, yield, or safety, making it incomplete for the question asked."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_071",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 63.0,
+          "manual_review": false,
+          "reason": "J1: The answer correctly notes that performance depends on local conditions and gives some general suitability points, but it omits specific yield data, disease resistance details, and other key performance metrics that the question seeks. Thus it is incomplete. | J2: The answer correctly avoids giving false specifics and is generally accurate, but it fails to provide any concrete performance data for Wuxiang Jiao 14 in large-scale field planting, leaving the question unanswered in a substantive way."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_072",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_073",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 27.0,
+          "manual_review": false,
+          "reason": "The answer does not provide the specific differences between Zhengdao 2 and Xiushui 63 to butachlor treatment, merely stating that no standard data exist. This omission makes it incomplete and likely incorrect if such differences are documented."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_074",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 67.0,
+          "manual_review": false,
+          "reason": "The answer correctly identifies MYB11 as a repressor and MYB31 as an activator, but it omits MYB42 entirely and is truncated, leaving out key target genes and the full regulatory roles. Thus it is incomplete and does not fully answer the question."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_076",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "FACTUAL_ERROR",
+          "critical_error": true,
+          "hallucination": true,
+          "judge_total": 35,
+          "manual_review": false,
+          "reason": "The answer reports rice and wheat yields in China as ~350–490 kg/ha and ~320–480 kg/ha, respectively, which are an order of magnitude lower than the actual yields (~3–5 t/ha). This factual inaccuracy makes the answer incorrect."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_078",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_079",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 70.0,
+          "manual_review": false,
+          "reason": "The answer correctly identifies a key issue (long breeding cycle and limited germplasm) and offers reasonable suggestions, but it only covers one problem and lacks the breadth expected for a comprehensive list of main challenges in hybrid japonica rice breeding and promotion."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_081",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "NO_ANSWER_TRUNCATED",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 0,
+          "manual_review": false,
+          "reason": "No final answer was produced (generation ended inside the thinking block or was empty)."
+        },
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_082",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 70.0,
+          "manual_review": false,
+          "reason": "The answer correctly identifies qLTG3-1 as a lodging‑resistance QTL and describes marker‑assisted selection, but it omits other potential applications and is incomplete relative to the question. No factual errors or hallucinations are present."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_001",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 62.0,
+          "manual_review": false,
+          "reason": "J1: The answer correctly mentions melatonin’s role in photoperiodic response and circadian interaction, but it lacks specific mechanisms, target genes, and experimental evidence relevant to rice. It also includes unrelated safety advice, making it incomplete for the question asked. | J2: The answer correctly mentions melatonin’s role in photoperiodic response and circadian interaction, but it lacks specific details on how melatonin modulates light‑inducible genes in rice, omits key genes or pathways, and adds unrelated safety considerations. Thus it is incomplete and does not fully answer the question."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_005",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 15,
+          "manual_review": false,
+          "reason": "The answer does not provide any specific disease‑resistance traits of the 330 maize variety, merely giving generic advice. It therefore fails to answer the question and is incomplete."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_009",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 42.0,
+          "manual_review": false,
+          "reason": "The answer correctly describes the benefits of drying for storage and transport, but it does not address the key reason why dried corn seeds have higher yield (走量). It omits the critical points about seed vigor, reduced losses, and improved germination that explain the yield advantage."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_015",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 70.0,
+          "manual_review": false,
+          "reason": "The answer correctly notes that marker-trait associations help prioritize traits and that practical value depends on heritability and feasibility, but it omits key implications such as accelerating breeding cycles, enabling marker-assisted selection, and reducing phenotyping costs. It also adds irrelevant safety considerations, making it incomplete for the question."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_021",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 15,
+          "manual_review": false,
+          "reason": "The answer does not provide any specific observed effects on rice yield or grain quality from ferrihydrite application, merely stating that effects depend on many factors. It fails to answer the question directly and is therefore incomplete."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_024",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 32.0,
+          "manual_review": false,
+          "reason": "The answer lists generic agronomic traits but does not provide any specific information about ChuGeng 28, so it fails to fully answer the question."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_026",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 15,
+          "manual_review": false,
+          "reason": "The answer does not provide the specific cross‑pollination fruit set rate for Fanyu A, merely a general statement about variability, so it fails to meet the question’s requirement."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_029",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 32.0,
+          "manual_review": false,
+          "reason": "The answer gives a generic statement about oxidizing power but does not explain its specific implications for Akagare disease in rice roots, nor does it mention key points such as disease resistance, stress indicators, or management strategies relevant to the disease. It is therefore incomplete and does not fully answer the question."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_030",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 80.0,
+          "manual_review": false,
+          "reason": "The answer correctly notes that root exudates affect nutrient availability and can influence contaminant uptake, but it omits key mechanisms such as chelation, microbial transformation, and the specific ways exudates mobilize or immobilize pollutants. It also adds unrelated management advice, making it incomplete for the question."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_032",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 70.0,
+          "manual_review": false,
+          "reason": "The answer correctly states that endosperm mutant genes can influence starch, sugar, and fiber synthesis, but it does not provide specific strategies or mechanisms for improving carbohydrate composition in corn breeding, making it incomplete."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_033",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 42.0,
+          "manual_review": false,
+          "reason": "The answer correctly states that silks can be entry points via wounds or natural openings, but it omits key pathogens (e.g., Fusarium, Aspergillus), specific disease outcomes (ear rot, mycotoxin contamination), and detailed implications for maize health, making it incomplete."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_034",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 39.5,
+          "manual_review": false,
+          "reason": "J1: The answer correctly notes general tolerance differences but fails to describe the specific snorkeling strategy differences between rice and weedy species, making it incomplete for the question. | J2: The answer mentions general tolerance differences but does not describe how the snorkeling strategy differs between rice and weedy species, so it is incomplete and does not fully answer the question."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_036",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 22.0,
+          "manual_review": false,
+          "reason": "The answer does not provide the specific results for Mudanjiang 32’s blast resistance or cold tolerance, merely suggesting that local trials are needed. It lacks the key agricultural conclusion required by the question, making it incomplete, though it contains no harmful misinformation."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_038",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 15,
+          "manual_review": false,
+          "reason": "The answer fails to give the specific seed sowing amount per tray, which is the key information requested. It only offers general guidelines, so it is incomplete and does not directly answer the question."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_039",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 15,
+          "manual_review": false,
+          "reason": "The answer does not provide the specific parent cultivars of 美优796, which is the core information requested. It only gives general guidance about where such information might be found, making it incomplete and not directly answering the question."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_043",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 15,
+          "manual_review": false,
+          "reason": "The answer does not mention any differences between indica and japonica rice backgrounds in response to the ydl mutation, so it fails to address the question and is incomplete."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_045",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 15,
+          "manual_review": false,
+          "reason": "The answer does not provide the requested concentration of benzyl benzoate for ovicidal activity against Sogatella furcifera eggs, so it fails to answer the question and is incomplete."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_046",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "FACTUAL_ERROR",
+          "critical_error": true,
+          "hallucination": false,
+          "judge_total": 32.0,
+          "manual_review": false,
+          "reason": "The answer fails to describe the well‑known SA–JA antagonistic crosstalk in rice, where JA signaling is crucial for resistance to Magnaporthe oryzae and SA can suppress JA responses. It gives generic statements that do not address the specific interaction or its effect on rice defense, making it factually incorrect and incomplete."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_047",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 15,
+          "manual_review": false,
+          "reason": "The answer fails to provide the specific growth period and ≥10℃ accumulated temperature for 通育266, which is the key information requested. It only states that the values vary by region and season, which is insufficient and incomplete."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_050",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 76.0,
+          "manual_review": false,
+          "reason": "The answer lists some benefits of diverse rotations (rooting patterns, nutrient demand, pest/disease/weed interruption) but omits other primary benefits such as improved soil fertility, yield stability, and erosion control that are important for the WCS region. Thus it is incomplete."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_052",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 72.0,
+          "manual_review": false,
+          "reason": "The answer correctly identifies transgenic maize lines and water deficit treatment as experimental approaches, but it omits specific details (e.g., phenotypic assays, gene expression analysis) and adds unrelated agronomic advice, making it incomplete for the question asked."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_055",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 15,
+          "manual_review": false,
+          "reason": "The answer does not list any chromosomes and fails to address the specific question about QTLs in rice grains."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_056",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 68.0,
+          "manual_review": false,
+          "reason": "The answer correctly describes general rice breeding steps but does not provide specific information on how Jiayou 173 was selected, making it incomplete for the question."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_057",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 73.0,
+          "manual_review": false,
+          "reason": "The answer correctly states that matching nitrogen supply to crop demand improves efficiency, but it does not mention maize specifically or detail how this improves tolerance to low nitrogen, making it incomplete for the question."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_060",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 48.5,
+          "manual_review": true,
+          "reason": "J1: The answer correctly describes general breeding methods and considerations, but it does not provide specific information on how Fanyuan A’s breeding program balanced rice quality and blast resistance, making it incomplete. | J2: The answer gives generic breeding methods but does not explain how Fanyuan A specifically balanced grain quality and blast resistance, so it fails to answer the question fully."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_063",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "FACTUAL_ERROR",
+          "critical_error": true,
+          "hallucination": false,
+          "judge_total": 73.0,
+          "manual_review": false,
+          "reason": "The answer incorrectly states that the variety was approved in 2009; the official release was in 2004. It also gives a generic breeding process without a detailed timeline, making it incomplete."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_067",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 73.0,
+          "manual_review": false,
+          "reason": "The answer provides correct general cultivation practices but lacks the specific technical points required for the 五151自交系, making it incomplete."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_069",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 44.5,
+          "manual_review": false,
+          "reason": "J1: The answer correctly describes general antimicrobial mechanisms of ZnO nanoparticles but omits key details about green‑synthesized ZnO NPs and their specific impact on maize, making it incomplete and not fully relevant to the question. | J2: The answer correctly describes general antimicrobial mechanisms of ZnO nanoparticles but does not address the specific properties of green‑synthesized ZnO NPs or their impact on maize, making it incomplete for the question asked."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_071",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 15,
+          "manual_review": false,
+          "reason": "The answer gives only generic advice about factors affecting variety performance and does not provide any specific information on how Wuxiang Jiao 14 performs in large-scale field planting, thus it fails to answer the question."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_072",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 59.5,
+          "manual_review": false,
+          "reason": "J1: The answer correctly discusses weed resistance and general management principles, but it does not provide specific chemical recommendations or dosage guidance for the cultivar 深两优828, making it incomplete for the question asked. | J2: The answer gives general weed‑management advice but does not provide specific chemical recommendations for the cultivar 深两优828, so it is incomplete relative to the question."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_073",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 15,
+          "manual_review": false,
+          "reason": "The answer does not mention any specific differences between Zhengdao 2 and Xiushui 63 in response to butachlor, thus it fails to address the question and is incomplete."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_074",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "FACTUAL_ERROR",
+          "critical_error": true,
+          "hallucination": false,
+          "judge_total": 40.0,
+          "manual_review": false,
+          "reason": "J1: The answer incorrectly states that MYB11, MYB31, and MYB42 encode basic helix-loop-helix transcription factors, whereas they are MYB family transcription factors that positively regulate lignin biosynthesis. It also omits key details about their specific regulatory role and includes unrelated advice. | J2: The answer incorrectly states that MYB11, MYB31, and MYB42 encode basic helix-loop-helix transcription factors, whereas they are MYB transcription factors. It also omits key details about their positive regulatory role in lignin biosynthesis and includes irrelevant advice, making it inaccurate and incomplete."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_075",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "QUESTION_MISUNDERSTANDING",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 15,
+          "manual_review": false,
+          "reason": "The answer does not address how rice responded to fomesafen or the yield implications; it provides generic advice unrelated to the specific question."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_077",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "FACTUAL_ERROR",
+          "critical_error": true,
+          "hallucination": false,
+          "judge_total": 44.5,
+          "manual_review": false,
+          "reason": "J1: The answer incorrectly claims that corn can be self‑pollinated and that this is easier to control, which is not true; corn is predominantly wind‑pollinated and relies on cross‑pollination for hybrid vigor. The rest of the answer is partially correct but the key factual error makes it inaccurate. | J2: The answer incorrectly claims that corn can self-pollinate, which is not true; corn is wind‑pollinated and relies on cross‑pollination for hybrid vigor. It also omits key points about hybrid production and the role of wind, making it incomplete."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_080",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 67.0,
+          "manual_review": false,
+          "reason": "The answer correctly states that conserved phosphorylation sites imply functional importance in signaling, cell cycle, and stress responses, but it omits other key implications such as evolutionary conservation, cross-species functional studies, and breeding targets. Additionally, it adds unrelated agronomic advice about diagnosing limiting factors and spending money, which is not relevant to the question."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_082",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "FACTUAL_ERROR",
+          "critical_error": true,
+          "hallucination": false,
+          "judge_total": 30.0,
+          "manual_review": false,
+          "reason": "The answer incorrectly links qLTG3-1 to disease resistance, yield stability, and general adaptation, whereas the locus is known for low-temperature germination. It omits the key application and adds unrelated breeding advice, making it incomplete and factually inaccurate."
+        }
+      ],
+      "error_distribution": {
+        "base": {
+          "FACTUAL_ERROR": {
+            "count": 6,
+            "percentage": 11.320754716981131
+          },
+          "HALLUCINATION": {
+            "count": 1,
+            "percentage": 1.8867924528301887
+          },
+          "INCOMPLETE": {
+            "count": 17,
+            "percentage": 32.075471698113205
+          },
+          "NO_ANSWER_TRUNCATED": {
+            "count": 28,
+            "percentage": 52.83018867924528
+          },
+          "QUESTION_MISUNDERSTANDING": {
+            "count": 1,
+            "percentage": 1.8867924528301887
+          }
+        },
+        "fine_tuned": {
+          "FACTUAL_ERROR": {
+            "count": 5,
+            "percentage": 13.88888888888889
+          },
+          "INCOMPLETE": {
+            "count": 30,
+            "percentage": 83.33333333333333
+          },
+          "QUESTION_MISUNDERSTANDING": {
+            "count": 1,
+            "percentage": 2.7777777777777777
+          }
+        }
+      },
+      "question_ids": [
+        "CROP_001",
+        "CROP_002",
+        "CROP_003",
+        "CROP_004",
+        "CROP_005",
+        "CROP_006",
+        "CROP_007",
+        "CROP_008",
+        "CROP_009",
+        "CROP_010",
+        "CROP_011",
+        "CROP_012",
+        "CROP_013",
+        "CROP_014",
+        "CROP_015",
+        "CROP_016",
+        "CROP_017",
+        "CROP_018",
+        "CROP_019",
+        "CROP_020",
+        "CROP_021",
+        "CROP_022",
+        "CROP_023",
+        "CROP_024",
+        "CROP_025",
+        "CROP_026",
+        "CROP_027",
+        "CROP_028",
+        "CROP_029",
+        "CROP_030",
+        "CROP_031",
+        "CROP_032",
+        "CROP_033",
+        "CROP_034",
+        "CROP_035",
+        "CROP_036",
+        "CROP_037",
+        "CROP_038",
+        "CROP_039",
+        "CROP_040",
+        "CROP_041",
+        "CROP_042",
+        "CROP_043",
+        "CROP_044",
+        "CROP_045",
+        "CROP_046",
+        "CROP_047",
+        "CROP_048",
+        "CROP_049",
+        "CROP_050",
+        "CROP_051",
+        "CROP_052",
+        "CROP_053",
+        "CROP_054",
+        "CROP_055",
+        "CROP_056",
+        "CROP_057",
+        "CROP_058",
+        "CROP_059",
+        "CROP_060",
+        "CROP_061",
+        "CROP_062",
+        "CROP_063",
+        "CROP_064",
+        "CROP_065",
+        "CROP_066",
+        "CROP_067",
+        "CROP_068",
+        "CROP_069",
+        "CROP_070",
+        "CROP_071",
+        "CROP_072",
+        "CROP_073",
+        "CROP_074",
+        "CROP_075",
+        "CROP_076",
+        "CROP_077",
+        "CROP_078",
+        "CROP_079",
+        "CROP_080",
+        "CROP_081",
+        "CROP_082"
+      ]
+    }
+  },
+  "training_diagnostics": [
+    "Training log: /home/rapidsai/Desktop/fine-tuning/AgriBot_Project/weights_nb1/log_history.json",
+    "Train loss 0.5204 -> 0.0687",
+    "Validation loss: best 0.0698 at step 800, last 0.0698 at step 846"
+  ],
+  "improvement": {
+    "fine_tuned": {
+      "errors": 36,
+      "errors_by_crop_category": {
+        "Unknown": 36
+      },
+      "errors_by_error_type": {
+        "INCOMPLETE": 30,
+        "FACTUAL_ERROR": 5,
+        "QUESTION_MISUNDERSTANDING": 1
+      },
+      "most_common_failure": "INCOMPLETE",
+      "recommended_interventions": [
+        {
+          "error_type": "INCOMPLETE",
+          "count": 30,
+          "action": "Add examples whose answers cover all key points (causes + diagnosis + action + dependencies)."
+        },
+        {
+          "error_type": "FACTUAL_ERROR",
+          "count": 5,
+          "action": "Add verified Q&A (FAO/PARC/provincial extension sources) on the failing concepts; remove templated answers that state facts generically."
+        },
+        {
+          "error_type": "QUESTION_MISUNDERSTANDING",
+          "count": 1,
+          "action": "Add varied phrasings and scenario-style questions so the model answers what is asked."
+        }
+      ],
+      "rules": [
+        "Write NEW questions that test the same underlying concept; never copy CROP questions, gold answers or paraphrases of them into training data.",
+        "Re-run the leakage audit on the new dataset before training.",
+        "Change one thing per experiment and re-run the frozen CROP-100."
+      ]
+    }
+  },
+  "failed_generations": [],
+  "priority_notes": [
+    "P1 dataset leakage/duplication: no exact duplicates in training data; CROP flagged: 0",
+    "P2 independent CROP-100: this run (frozen hash above).",
+    "P3/P4 failure analysis -> targeted error-correction data: see interventions above.",
+    "P5 new SFT/QLoRA run, P6 DPO/DoRA only if SFT plateaus, P7 MoA: add each as a label in EXTRA_MODELS and re-run; every technique is scored on the same frozen CROP-100."
+  ]
+}

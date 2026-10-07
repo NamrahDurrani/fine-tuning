@@ -1,0 +1,47 @@
+[
+  {
+    "mode": "model_only",
+    "pair": [
+      "base",
+      "fine_tuned"
+    ],
+    "question_id": "CROP_001",
+    "winner": "base",
+    "reason": "Answer Y correctly states that melatonin is not a primary light-sensing hormone and does not directly regulate light-inducible genes in rice, whereas Answer X incorrectly claims melatonin influences these genes.",
+    "position": {
+      "X": "fine_tuned",
+      "Y": "base"
+    },
+    "judge_backend": "gptoss"
+  },
+  {
+    "mode": "model_only",
+    "pair": [
+      "base",
+      "fine_tuned"
+    ],
+    "question_id": "CROP_002",
+    "winner": "base",
+    "reason": "Answer X correctly identifies that “双两优 1 号” is not a standard variety name, likely a confusion with “两优1号”, and provides accurate agronomic traits for that variety, whereas Answer Y gives vague, generic statements that may be inaccurate.",
+    "position": {
+      "X": "base",
+      "Y": "fine_tuned"
+    },
+    "judge_backend": "gptoss"
+  },
+  {
+    "mode": "model_only",
+    "pair": [
+      "base",
+      "fine_tuned"
+    ],
+    "question_id": "CROP_003",
+    "winner": "base",
+    "reason": "Answer Y accurately lists conserved catalytic residues, ATP-binding pocket, activation loop similarity, and stress signaling roles, providing a complete and relevant comparison, whereas Answer X is vague and includes unrelated advice.",
+    "position": {
+      "X": "fine_tuned",
+      "Y": "base"
+    },
+    "judge_backend": "gptoss"
+  }
+]

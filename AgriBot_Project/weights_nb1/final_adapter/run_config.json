@@ -1,0 +1,14 @@
+{
+  "base_model": "Qwen/Qwen3-4B-Thinking-2507",
+  "dora": true,
+  "r": 16,
+  "alpha": 32,
+  "dropout": 0.05,
+  "lr": 0.0002,
+  "epochs": 3,
+  "eff_batch": 16,
+  "max_len": 1024,
+  "seed": 42,
+  "train_examples": 4500,
+  "val_examples": 500
+}

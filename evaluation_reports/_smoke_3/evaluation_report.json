@@ -1,0 +1,453 @@
+{
+  "generated_at": "2026-10-07 16:58:13",
+  "benchmark_sha256": "98368208e07f84d13b62013c0ca00736ffecdea71deb65dfab15d2603cf336f4",
+  "smoke": 3,
+  "config": {
+    "max_new_tokens": 1024,
+    "do_sample": false,
+    "quantization": "4bit",
+    "base_model": "Qwen/Qwen3-4B-Thinking-2507",
+    "judge_order": [
+      "gemini",
+      "gptoss"
+    ],
+    "gemini_model": "gemini-2.5-flash",
+    "gptoss_provider": "groq",
+    "gptoss_model": "openai/gpt-oss-20b",
+    "target": 95,
+    "seed": 42
+  },
+  "hardware": {
+    "python": "3.10.12",
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.35",
+    "torch": "2.11.0+cu128",
+    "cuda_available": true,
+    "cuda_version": "12.8",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "vram_total_gb": 23.55,
+    "free_vram_gb": 22.71,
+    "bf16_supported": true,
+    "compute_capability": [
+      8,
+      6
+    ],
+    "dtype": "bfloat16",
+    "transformers": "5.19.0",
+    "peft": "0.21.2",
+    "bitsandbytes": "0.50.2",
+    "sentence_transformers": "6.1.0",
+    "quantization_available": true
+  },
+  "models": [
+    {
+      "label": "base",
+      "role": "Model A - Base",
+      "kind": "base",
+      "path": "Qwen/Qwen3-4B-Thinking-2507",
+      "info": {
+        "model": "Qwen/Qwen3-4B-Thinking-2507"
+      }
+    },
+    {
+      "label": "fine_tuned",
+      "role": "Model B - Fine-Tuned (Notebook 1)",
+      "kind": "peft_adapter",
+      "path": "/home/rapidsai/Desktop/fine-tuning/AgriBot_Project/weights_nb1/final_adapter",
+      "info": {
+        "path": "/home/rapidsai/Desktop/fine-tuning/AgriBot_Project/weights_nb1/final_adapter",
+        "kind": "peft_adapter",
+        "problems": [],
+        "notes": [],
+        "base_model": "Qwen/Qwen3-4B-Thinking-2507",
+        "peft_type": "LORA",
+        "r": 16,
+        "lora_alpha": 32,
+        "use_dora": true,
+        "target_modules": [
+          "down_proj",
+          "k_proj",
+          "o_proj",
+          "gate_proj",
+          "up_proj",
+          "v_proj",
+          "q_proj"
+        ],
+        "has_tokenizer_files": true
+      }
+    }
+  ],
+  "skipped_models": [
+    {
+      "label": "moa",
+      "reason": "Model C - Optimized MoA (Notebook 2): no weights found (looked for weights_nb2 under ['/home/rapidsai/Desktop/fine-tuning', '/home/rapidsai/Desktop/fine-tuning/AgriBot_Project'])"
+    }
+  ],
+  "benchmark_stats": {
+    "n": 3,
+    "categories": {
+      "Unknown": 3
+    },
+    "difficulty": {
+      "unspecified": 3
+    },
+    "with_gold": 0
+  },
+  "leakage": {
+    "embedding_backend": "sentence-transformers:sentence-transformers/all-MiniLM-L6-v2",
+    "thresholds": [
+      0.9,
+      0.95,
+      0.97
+    ],
+    "total_benchmark_questions": 3,
+    "training_sources": {
+      "dataset_rows": 5000,
+      "extra_files": [
+        {
+          "file": "/home/rapidsai/Desktop/fine-tuning/AgriBot_Project/AgriBot_5000_Unique_Agriculture_Dataset.json",
+          "n": 5000
+        }
+      ]
+    },
+    "exact_leakage_count": 0,
+    "near_duplicate_counts": {
+      ">=0.9": 0,
+      ">=0.95": 0,
+      ">=0.97": 0
+    },
+    "near_duplicate_count_at_0.90": 0,
+    "safe_count": 3,
+    "flagged_questions": [],
+    "flagged_ids": [],
+    "gold_answer_vs_training_responses_ge_0.90": [],
+    "note": "Flagged questions are NOT removed. Scores are also reported on the leakage-clean subset."
+  },
+  "dataset_quality": {
+    "n_rows": 5000,
+    "exact_duplicate_questions": 0,
+    "exact_duplicate_answers": 0,
+    "category_counts": {
+      "Livestock": 350,
+      "Crop production": 750,
+      "Soil & fertilizers": 650,
+      "Farm machinery": 300,
+      "Pests & diseases": 750,
+      "Climate & weather": 300,
+      "Irrigation & water": 500,
+      "General sustainable agriculture": 450,
+      "Post-harvest": 350,
+      "Pakistan agriculture": 600
+    },
+    "region_focus_counts": {
+      "central Punjab": 338,
+      "irrigated Punjab": 316,
+      "Sindh": 327,
+      "Islamabad Capital Territory": 347,
+      "rainfed Punjab": 310,
+      "upper Sindh": 322,
+      "arid Balochistan": 374,
+      "northern Pakistan": 329,
+      "Punjab": 336,
+      "coastal Sindh": 341,
+      "Balochistan": 303,
+      "southern Punjab": 334,
+      "Khyber Pakhtunkhwa": 345,
+      "Potohar": 365,
+      "lower Sindh": 313
+    },
+    "answer_length_words": {
+      "mean": 73.1934,
+      "median": 73.0,
+      "min": 55,
+      "max": 96
+    },
+    "question_length_words": {
+      "mean": 23.0658,
+      "median": 23.0,
+      "min": 16,
+      "max": 35
+    },
+    "embedding_backend": "sentence-transformers:sentence-transformers/all-MiniLM-L6-v2",
+    "semantic_duplicate_questions": {
+      ">=0.9": {
+        "items_with_a_neighbour": 2800,
+        "pairs": 3879
+      },
+      ">=0.95": {
+        "items_with_a_neighbour": 1041,
+        "pairs": 742
+      },
+      ">=0.97": {
+        "items_with_a_neighbour": 299,
+        "pairs": 165
+      }
+    },
+    "semantic_duplicate_answers": {
+      ">=0.9": {
+        "items_with_a_neighbour": 4218,
+        "pairs": 48699
+      },
+      ">=0.95": {
+        "items_with_a_neighbour": 3252,
+        "pairs": 12363
+      },
+      ">=0.97": {
+        "items_with_a_neighbour": 2274,
+        "pairs": 3679
+      }
+    },
+    "train_validation_leakage_nb1_random_split": {
+      "train": 4500,
+      "validation": 500,
+      "val_items_with_train_neighbour>=0.9": 257,
+      "val_items_with_train_neighbour>=0.95": 93,
+      "val_items_with_train_neighbour>=0.97": 27
+    },
+    "warnings": []
+  },
+  "results": {
+    "model_only": {
+      "mode": "model_only",
+      "n_questions": 3,
+      "models": {
+        "base": {
+          "correct": 2,
+          "n": 3,
+          "accuracy": 0.6666666666666666,
+          "wilson_ci95": [
+            0.2076549551264879,
+            0.9385096847238394
+          ],
+          "bootstrap_ci95": [
+            0.0,
+            1.0
+          ],
+          "correct_judge1_only": 2,
+          "clean_subset": {
+            "n": 3,
+            "correct": 2,
+            "accuracy": 0.6666666666666666
+          },
+          "judge_total": {
+            "mean": 69.66666666666667,
+            "median": 87.0,
+            "std": 37.16629297271027,
+            "min": 27.0,
+            "max": 95.0,
+            "ci95_low": 27.0,
+            "ci95_high": 95.0
+          },
+          "dimension_means": {
+            "accuracy": 26.666666666666668,
+            "completeness": 15.0,
+            "relevance": 15.0,
+            "conciseness": 13.0
+          },
+          "hallucination_count": 2,
+          "critical_error_count": 1,
+          "judge_disagreements": 0,
+          "judge_mix": {
+            "gptoss": 3
+          },
+          "second_pass_independent": 0,
+          "second_pass_same_judge": 0,
+          "truncated_no_answer": 0,
+          "finish_reason_length": 3,
+          "mean_generation_seconds": 18.426999999999996,
+          "mean_tokens_generated": 1024.0,
+          "mean_reasoning_tokens": 683.3333333333334,
+          "per_category": {
+            "Unknown": {
+              "correct": 2,
+              "n": 3,
+              "accuracy": 0.6666666666666666
+            }
+          },
+          "per_difficulty": {
+            "unspecified": {
+              "correct": 2,
+              "n": 3,
+              "accuracy": 0.6666666666666666
+            }
+          }
+        },
+        "fine_tuned": {
+          "correct": 2,
+          "n": 3,
+          "accuracy": 0.6666666666666666,
+          "wilson_ci95": [
+            0.2076549551264879,
+            0.9385096847238394
+          ],
+          "bootstrap_ci95": [
+            0.0,
+            1.0
+          ],
+          "correct_judge1_only": 2,
+          "clean_subset": {
+            "n": 3,
+            "correct": 2,
+            "accuracy": 0.6666666666666666
+          },
+          "judge_total": {
+            "mean": 67.66666666666667,
+            "median": 69.0,
+            "std": 15.044378795195678,
+            "min": 52.0,
+            "max": 82.0,
+            "ci95_low": 52.0,
+            "ci95_high": 82.0
+          },
+          "dimension_means": {
+            "accuracy": 30.0,
+            "completeness": 11.5,
+            "relevance": 14.166666666666666,
+            "conciseness": 12.0
+          },
+          "hallucination_count": 0,
+          "critical_error_count": 0,
+          "judge_disagreements": 0,
+          "judge_mix": {
+            "gptoss": 3
+          },
+          "second_pass_independent": 0,
+          "second_pass_same_judge": 1,
+          "truncated_no_answer": 0,
+          "finish_reason_length": 0,
+          "mean_generation_seconds": 25.613666666666663,
+          "mean_tokens_generated": 93.66666666666667,
+          "mean_reasoning_tokens": 0.0,
+          "per_category": {
+            "Unknown": {
+              "correct": 2,
+              "n": 3,
+              "accuracy": 0.6666666666666666
+            }
+          },
+          "per_difficulty": {
+            "unspecified": {
+              "correct": 2,
+              "n": 3,
+              "accuracy": 0.6666666666666666
+            }
+          }
+        }
+      },
+      "pairs": {
+        "base__vs__fine_tuned": {
+          "accuracy_diff_pp": 0.0,
+          "mcnemar": {
+            "a_correct_b_wrong": 1,
+            "a_wrong_b_correct": 1,
+            "p_value": 1.0
+          },
+          "bootstrap_acc_diff": {
+            "mean_diff": 0.0,
+            "ci95_low": -1.0,
+            "ci95_high": 1.0
+          },
+          "bootstrap_score_diff": {
+            "mean_diff": 2.0,
+            "ci95_low": -55.0,
+            "ci95_high": 43.0
+          }
+        }
+      },
+      "pairwise": {
+        "base__vs__fine_tuned": {
+          "base": 3,
+          "fine_tuned": 0,
+          "tie": 0,
+          "sign_test_p": 0.25
+        }
+      },
+      "error_rows": [
+        {
+          "mode": "model_only",
+          "model": "base",
+          "question_id": "CROP_002",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "FACTUAL_ERROR",
+          "critical_error": true,
+          "hallucination": true,
+          "judge_total": 27.0,
+          "manual_review": false,
+          "reason": "The answer incorrectly claims that \"双两优1号\" is not a standard variety and does not provide the specific agronomic traits asked for, leading to a factual error and incomplete response."
+        },
+        {
+          "mode": "model_only",
+          "model": "fine_tuned",
+          "question_id": "CROP_001",
+          "crop_category": "Unknown",
+          "difficulty": "unspecified",
+          "region": "unspecified",
+          "error_category": "INCOMPLETE",
+          "critical_error": false,
+          "hallucination": false,
+          "judge_total": 52.0,
+          "manual_review": false,
+          "reason": "J1: The answer correctly mentions melatonin’s role in photoperiodic response and circadian interaction, but it lacks specific mechanisms, target genes, and experimental evidence relevant to rice. It also includes unrelated safety advice, making it incomplete for the question asked. | J2: The answer correctly states that melatonin can affect light‑inducible genes via the circadian clock, but it is too vague, omits key genes and mechanisms, and adds unrelated safety considerations, making it incomplete for the question."
+        }
+      ],
+      "error_distribution": {
+        "base": {
+          "FACTUAL_ERROR": {
+            "count": 1,
+            "percentage": 100.0
+          }
+        },
+        "fine_tuned": {
+          "INCOMPLETE": {
+            "count": 1,
+            "percentage": 100.0
+          }
+        }
+      },
+      "question_ids": [
+        "CROP_001",
+        "CROP_002",
+        "CROP_003"
+      ]
+    }
+  },
+  "training_diagnostics": [
+    "Training log: /home/rapidsai/Desktop/fine-tuning/AgriBot_Project/weights_nb1/log_history.json",
+    "Train loss 0.5204 -> 0.0687",
+    "Validation loss: best 0.0698 at step 800, last 0.0698 at step 846",
+    "WARNING: training loss went DOWN but CROP did not improve (fine_tuned 2 vs base 2). Likely overfitting / poor generalisation / template learning.",
+    "WARNING: token accuracy rose but CROP is unchanged or not significantly better (McNemar p=1.000). Treat as possible memorisation / template learning."
+  ],
+  "improvement": {
+    "fine_tuned": {
+      "errors": 1,
+      "errors_by_crop_category": {
+        "Unknown": 1
+      },
+      "errors_by_error_type": {
+        "INCOMPLETE": 1
+      },
+      "most_common_failure": "INCOMPLETE",
+      "recommended_interventions": [
+        {
+          "error_type": "INCOMPLETE",
+          "count": 1,
+          "action": "Add examples whose answers cover all key points (causes + diagnosis + action + dependencies)."
+        }
+      ],
+      "rules": [
+        "Write NEW questions that test the same underlying concept; never copy CROP questions, gold answers or paraphrases of them into training data.",
+        "Re-run the leakage audit on the new dataset before training.",
+        "Change one thing per experiment and re-run the frozen CROP-100."
+      ]
+    }
+  },
+  "failed_generations": [],
+  "priority_notes": [
+    "P1 dataset leakage/duplication: no exact duplicates in training data; CROP flagged: 0",
+    "P2 independent CROP-100: this run (frozen hash above).",
+    "P3/P4 failure analysis -> targeted error-correction data: see interventions above.",
+    "P5 new SFT/QLoRA run, P6 DPO/DoRA only if SFT plateaus, P7 MoA: add each as a label in EXTRA_MODELS and re-run; every technique is scored on the same frozen CROP-100."
+  ]
+}

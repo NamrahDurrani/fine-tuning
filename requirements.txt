@@ -1,0 +1,32 @@
+# =========================
+# AgriBot Fine-Tuning
+# Python 3.10
+# =========================
+
+# Numerical / data
+numpy==1.26.4
+pandas==2.2.3
+
+# Hugging Face datasets
+datasets==2.20.0
+pyarrow==15.0.2
+pyarrow-hotfix==0.6
+fsspec==2024.5.0
+
+# Hugging Face
+transformers==5.13.1
+huggingface-hub==1.23.0
+safetensors>=0.7.0
+
+# Fine-tuning
+peft==0.10.0
+trl==0.8.5
+accelerate==0.29.3
+
+# PyTorch
+torch==2.11.0
+
+# Evaluation
+evaluate==0.3.0
+scikit-learn==1.7.2
+tqdm==4.69.1

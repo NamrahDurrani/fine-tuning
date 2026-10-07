@@ -1,0 +1,83 @@
+{
+  "n_rows": 5000,
+  "exact_duplicate_questions": 0,
+  "exact_duplicate_answers": 0,
+  "category_counts": {
+    "Livestock": 350,
+    "Crop production": 750,
+    "Soil & fertilizers": 650,
+    "Farm machinery": 300,
+    "Pests & diseases": 750,
+    "Climate & weather": 300,
+    "Irrigation & water": 500,
+    "General sustainable agriculture": 450,
+    "Post-harvest": 350,
+    "Pakistan agriculture": 600
+  },
+  "region_focus_counts": {
+    "central Punjab": 338,
+    "irrigated Punjab": 316,
+    "Sindh": 327,
+    "Islamabad Capital Territory": 347,
+    "rainfed Punjab": 310,
+    "upper Sindh": 322,
+    "arid Balochistan": 374,
+    "northern Pakistan": 329,
+    "Punjab": 336,
+    "coastal Sindh": 341,
+    "Balochistan": 303,
+    "southern Punjab": 334,
+    "Khyber Pakhtunkhwa": 345,
+    "Potohar": 365,
+    "lower Sindh": 313
+  },
+  "answer_length_words": {
+    "mean": 73.1934,
+    "median": 73.0,
+    "min": 55,
+    "max": 96
+  },
+  "question_length_words": {
+    "mean": 23.0658,
+    "median": 23.0,
+    "min": 16,
+    "max": 35
+  },
+  "embedding_backend": "sentence-transformers:sentence-transformers/all-MiniLM-L6-v2",
+  "semantic_duplicate_questions": {
+    ">=0.9": {
+      "items_with_a_neighbour": 2800,
+      "pairs": 3879
+    },
+    ">=0.95": {
+      "items_with_a_neighbour": 1041,
+      "pairs": 742
+    },
+    ">=0.97": {
+      "items_with_a_neighbour": 299,
+      "pairs": 165
+    }
+  },
+  "semantic_duplicate_answers": {
+    ">=0.9": {
+      "items_with_a_neighbour": 4218,
+      "pairs": 48699
+    },
+    ">=0.95": {
+      "items_with_a_neighbour": 3252,
+      "pairs": 12363
+    },
+    ">=0.97": {
+      "items_with_a_neighbour": 2274,
+      "pairs": 3679
+    }
+  },
+  "train_validation_leakage_nb1_random_split": {
+    "train": 4500,
+    "validation": 500,
+    "val_items_with_train_neighbour>=0.9": 257,
+    "val_items_with_train_neighbour>=0.95": 93,
+    "val_items_with_train_neighbour>=0.97": 27
+  },
+  "warnings": []
+}

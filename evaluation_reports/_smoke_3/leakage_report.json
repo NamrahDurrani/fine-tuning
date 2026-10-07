@@ -1,0 +1,30 @@
+{
+  "embedding_backend": "sentence-transformers:sentence-transformers/all-MiniLM-L6-v2",
+  "thresholds": [
+    0.9,
+    0.95,
+    0.97
+  ],
+  "total_benchmark_questions": 3,
+  "training_sources": {
+    "dataset_rows": 5000,
+    "extra_files": [
+      {
+        "file": "/home/rapidsai/Desktop/fine-tuning/AgriBot_Project/AgriBot_5000_Unique_Agriculture_Dataset.json",
+        "n": 5000
+      }
+    ]
+  },
+  "exact_leakage_count": 0,
+  "near_duplicate_counts": {
+    ">=0.9": 0,
+    ">=0.95": 0,
+    ">=0.97": 0
+  },
+  "near_duplicate_count_at_0.90": 0,
+  "safe_count": 3,
+  "flagged_questions": [],
+  "flagged_ids": [],
+  "gold_answer_vs_training_responses_ge_0.90": [],
+  "note": "Flagged questions are NOT removed. Scores are also reported on the leakage-clean subset."
+}
