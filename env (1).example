@@ -1,0 +1,8 @@
+# Copy this file to ".env" (same folder as agribot_crop_eval.py) and fill in your keys.
+# Never commit .env to git. Real environment variables take priority over this file.
+GEMINI_API_KEY=your-google-ai-studio-key
+GROQ_API_KEY=your-groq-key
+# If your GPT-OSS key is from OpenRouter instead: set GPTOSS_PROVIDER = "openrouter" in the script
+# and use OPENROUTER_API_KEY=... here.
+# Optional, if the Hugging Face model download needs login:
+# HF_TOKEN=your-huggingface-token

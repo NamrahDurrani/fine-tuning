@@ -1,0 +1,16 @@
+# Install PyTorch FIRST (CUDA build for your GPU, see https://pytorch.org/get-started/locally/), then:
+#   pip install -r requirements_eval.txt
+transformers
+peft
+accelerate
+bitsandbytes
+datasets
+sentence-transformers
+google-genai
+requests
+pandas
+numpy
+scipy
+scikit-learn
+matplotlib
+tqdm
